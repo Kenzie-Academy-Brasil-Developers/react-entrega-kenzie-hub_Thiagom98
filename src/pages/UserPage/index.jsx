@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import logo from "../../assets/logo.png"
+import logo from "../../assets/Logo.png"
 import { StyledButton2, StyledHeader, StyledLogo, StyledSection, StyledSection2, StyledText, StyledText2, StyledTitle } from "../../styles/pages"
 import { useEffect, useState } from "react";
 import { api } from "../../services/services";

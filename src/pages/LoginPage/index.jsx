@@ -1,4 +1,4 @@
-import logo from "../../assets/logo.png"
+import logo from "../../assets/Logo.png"
 import { LoginForm } from "../../components/LoginForm"
 import { StyledContainer, StyledLogo } from "../../styles/pages"
 export const LoginPage = () => {
