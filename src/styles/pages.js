@@ -81,7 +81,7 @@ export const StyledText = styled.p`
     color: var(--color-grey-1);
 
 `
-export const StyledFormEspecial = styled.form`
+export const StyledFormEspecial = styled.div`
     display:flex;
     flex-direction:row;
     padding: 0px 13.0293px;
