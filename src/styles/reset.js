@@ -19,5 +19,6 @@ export const GlobalReset = createGlobalStyle`
     }
     body , #root{
         height: 100vh;
+        max-width: 4000px;
     }
 `

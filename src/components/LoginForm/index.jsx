@@ -1,8 +1,8 @@
-import { StyledButton, StyledFormEspecial, StyledLabel, StyledText, StyledTitle, StyledInput, StyledForm2, StyledContainer2, StyledForm, } from "../../styles/pages"
+import { StyledButton, StyledFormEspecial, StyledLabel, StyledText, StyledTitle, StyledInput, StyledForm2, StyledContainer2, StyledForm, StyledLink, } from "../../styles/pages"
 import eye from '../../assets/eye.png'
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { api } from "../../services/services";
 import { toast } from "react-toastify";
 import { useState } from "react";
@@ -72,7 +72,7 @@ export const LoginForm = () => {
 
                     <StyledText>Ainda não possui uma conta?</StyledText>
                 </StyledForm2>
-                <StyledButton onClick={() => { navigate('/user/create') }} background='#868E96' border='#868E96' >Cadastre-se</StyledButton>
+                <StyledLink to={'/user/create'} background='#868E96' border='#868E96'>Cadastre-se</StyledLink>
 
             </StyledContainer2>
         </>

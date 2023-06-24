@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledContainer = styled.div`
@@ -219,9 +220,11 @@ export const StyledSection = styled.section`
     padding: 4% 5% ;
     border-bottom: solid 1px;
     border-color: ${props => props.borderColor} ;
+    flex-wrap: wrap;
+    gap: 1rem;
     
     @media (min-width:1024px) {
-        padding: 1% 18%;
+        padding: 4% 18%;
         
     }
 
@@ -274,5 +277,43 @@ export const StyledForm2 = styled.form`
     justify-content: space-between;
     width: 100%;
     max-width: 370px ;
+
+`
+export const StyledLink = styled(Link)`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 22.3336px;
+    gap: 10.15px;
+    border: 1.2182px solid ;
+    border-radius: .2562rem;
+    height: clamp(2.4rem, 1.5vh, 3rem );
+    background: ${props => props.background};
+    border-color: ${props => props.border} ;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12.8347px;
+    line-height: 21px;
+    color: #FFFFFF;
+`
+export const StyledLink2 = styled(Link)`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 16.2426px;
+    gap: 10.15px;
+    background: #212529;
+    border-radius: 4px;
+    height: 35px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 9.59437px;
+    line-height: 23px;
+    color: var(--color-grey-0);
 
 `

@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-function App() {
+const App = () => {
 
   return (
     <>
