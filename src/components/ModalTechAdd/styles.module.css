@@ -1,0 +1,45 @@
+.modalOverlay{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20% 1%;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, .3);
+}
+.modalBox{
+    position: relative;
+    width: 100%;
+    height: 26rem;
+    margin: 1rem;
+}
+.closeButton{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color:  rgba(255, 255, 255, 0.5);;
+}
+.modalHeader{
+    background-color: var(--color-grey-2);
+    padding: 1rem;
+}
+.textModal{
+    font-size: clamp(.75rem, 2.5vw,  1rem);
+}
+@media (min-width: 1024px) {
+    .modalOverlay{
+        padding: 20% 35%;
+    }
+    
+}
+.modalAddForm{
+    background-color: var(--color-grey-3);
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 5%;
+    justify-content: space-between;
+}

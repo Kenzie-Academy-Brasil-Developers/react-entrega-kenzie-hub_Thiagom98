@@ -5,7 +5,7 @@ export const LoginPage = () => {
     return (
         <StyledContainer>
             <StyledLogo src={logo} alt="" />
-            <LoginForm />
+            <LoginForm/>
         </StyledContainer>
     )
 }

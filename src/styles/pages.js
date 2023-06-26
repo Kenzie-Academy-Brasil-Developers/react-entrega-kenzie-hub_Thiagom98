@@ -317,3 +317,85 @@ export const StyledLink2 = styled(Link)`
     color: var(--color-grey-0);
 
 `
+export const DivTech = styled.div`
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+`
+export const StyledTechList = styled.ul`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color:#212529;
+    padding: 3%;
+    gap: 1rem;
+`
+export const StyledTechCard = styled.li`
+    display: flex;
+    background-color: #121214;
+    width: 100%;
+    padding: 1.5% 3%;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border: 0;
+    transition: border 0.3s;
+    :hover{
+        cursor: pointer;
+        border: 0.5px solid white;
+    }
+;
+
+`
+export const StyledButtonDelete = styled.button`
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 22.3336px;
+    gap: 10.15px;
+    border: 1.2182px solid ;
+    border-radius: .2562rem;
+    height: clamp(2.4rem, 1.5vh, 3rem );
+    background: #868E96;
+    border: #868E96;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12.8347px;
+    line-height: 21px;
+    color: #FFFFFF;
+`
+
+export const StyledButtonContainer = styled.div`
+    display: flex;
+    gap: 0.5rem;
+
+`
+export const StyledNameModal = styled.div`
+    display:flex;
+    flex-direction:row;
+    padding: 0px 13.0293px;
+    gap: 8.14px;
+    background: var(--color-grey-2);
+    width: 100%;
+    height: clamp(2.4rem, 1.5vh, 3rem );
+    border: 0.9772px solid;
+    border-radius: 3.20867px;
+    border-color: ${props => props.borderColor}  ;
+    color: var(--color-grey-0);  
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    align-items: center;
+    :focus{
+        outline: none;
+    }
+
+`

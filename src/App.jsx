@@ -1,4 +1,5 @@
-
+import { TechProvider } from "./providers/TechContext";
+import { UserProvider } from "./providers/UserContext";
 import { RoutesMain } from "./routes/RoutesMain"
 import { GlobalStyle } from "./styles/global"
 import { GlobalReset } from "./styles/reset"
@@ -11,10 +12,14 @@ const App = () => {
 
   return (
     <>
-      <GlobalStyle />
-      <GlobalReset />
-      <RoutesMain />
-      <ToastContainer />
+      <UserProvider>
+        <TechProvider>
+          <GlobalStyle />
+          <GlobalReset />
+          <RoutesMain />
+          <ToastContainer />
+        </TechProvider>
+      </UserProvider>
     </>
   )
 }

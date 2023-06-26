@@ -2,11 +2,9 @@ import { StyledButton, StyledFormEspecial, StyledLabel, StyledText, StyledTitle,
 import eye from '../../assets/eye.png'
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Link, useNavigate } from "react-router-dom";
-import { api } from "../../services/services";
-import { toast } from "react-toastify";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LoginFormSchema } from "./LoginFormSchema";
+import { UserContext } from "../../providers/UserContext";
 
 
 export const LoginForm = () => {
@@ -14,40 +12,15 @@ export const LoginForm = () => {
         resolver: zodResolver(LoginFormSchema)
     });
 
-    const notify = (message) => toast(message)
 
-    const navigate = useNavigate();
-
-    const [inputType, setInputType] = useState('password')
-
-    const seePassword = () => {
-        if (inputType === 'text') {
-            setInputType('password')
-        } else {
-            setInputType('text')
-        }
-    }
+    const { seePassword, loginUser, inputType } = useContext(UserContext)
 
 
-    const loginUser = async (formData) => {
-        try {
-            const { data } = await api.post('/sessions', formData)
-            localStorage.setItem('@TOKEN', JSON.stringify(data.token))
-            localStorage.setItem('@USERID', JSON.stringify(data.user.id))
-            navigate(`/user/${data.user.name}`)
-            notify('Login efetuado com sucesso')
-
-        } catch (error) {
-            notify('Email ou senha inválidos')
-
-        }
-    }
-
+    
     const submit = (formData) => {
         loginUser(formData)
 
     }
-
 
     return (
         <>

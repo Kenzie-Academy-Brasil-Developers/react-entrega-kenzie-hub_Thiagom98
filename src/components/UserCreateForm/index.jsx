@@ -1,51 +1,25 @@
-import { useState } from "react"
+import { useContext } from "react"
 import { useForm } from "react-hook-form"
 import { StyledButton, StyledForm, StyledInput, StyledLabel, StyledSelect, StyledText, StyledTitle } from "../../styles/pages"
-import { api } from "../../services/services";
-import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { UserCreateSchema } from "./UserCreateSchema";
 import { Input } from "../Input";
-import { toast } from "react-toastify";
+import { UserContext } from "../../providers/UserContext";
 
 
 export const UserCreateForm = () => {
-    const { register, handleSubmit, reset, getValues, formState: { errors } } = useForm({
+    const { register, handleSubmit, getValues, reset,  formState: { errors } } = useForm({
         resolver: zodResolver(UserCreateSchema)
     });
 
-    const navigate = useNavigate()
+    const {  inputConfirmText, setInputConfirm, createUser  } = useContext(UserContext)
 
+    const senhaOrigin = getValues('password')
 
-    const notify = (message) => toast(message)
-
-    const [inputConfirmText, setInputConfirmText] = useState('');
-
-    const [inputConfirm, setInputConfirm] = useState('');
-
-
-    const createUser = async (formData) => {
-        if (getValues('password') != inputConfirm) {
-            setInputConfirmText('Sua confirmação de senha está errada')
-        } else {
-
-            try {
-                const { data } = await api.post('/users', formData)
-                notify('Conta criada com sucesso')
-                navigate('/')
-
-
-            } catch (error) {
-                notify('Algo de errado aconteceu')
-            }
-        }
-    }
 
     const submit = async (formData) => {
-        await createUser(formData)
+        await createUser(formData,senhaOrigin, reset)
         setInputConfirm('')
-        reset()
-
     }
 
     return (
@@ -61,6 +35,7 @@ export const UserCreateForm = () => {
                 <StyledText>{inputConfirmText}</StyledText>
                 <Input label="Bio" type="text" register={register('bio')} error={errors.bio} placeholder='Fale sobre você' />
                 <Input label="Contato" type="number" register={register('contact')} error={errors.contact} placeholder='Opção de contato' />
+                <StyledLabel>Selecionar Módulo</StyledLabel>
                 <StyledSelect name="" id="" borderColor='transparent'  {...register('course_module')} >
                     <option value="Primeiro módulo (Introdução ao Frontend)">Primeiro Módulo</option>
                     <option value="Segundo módulo (Frontend Avançado)">Segundo Módulo</option>

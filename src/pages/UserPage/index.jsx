@@ -1,35 +1,21 @@
-import { useNavigate, useParams } from "react-router-dom";
 import logo from "../../assets/Logo.png"
-import { StyledButton2, StyledHeader, StyledLogo, StyledSection, StyledSection2, StyledText, StyledText2, StyledTitle } from "../../styles/pages"
-import { useEffect, useState } from "react";
-import { api } from "../../services/services";
+import { DivTech, StyledButton2, StyledHeader, StyledLogo, StyledSection, StyledSection2, StyledText, StyledText2, StyledTitle } from "../../styles/pages"
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../providers/UserContext";
+import plus from "../../assets/plus.png"
+import { Modal } from "../../components/ModalTechAdd";
+import { TechList } from "../../components/TechList";
+import { TechContext } from "../../providers/TechContext";
+import { ModalAtt } from "../../components/ModalTechAtt";
 
 export const UserPage = () => {
-    const navigate = useNavigate();
 
-    const [userProfile, setUserProfile] = useState([])
 
-    const token = JSON.parse(localStorage.getItem('@TOKEN'))
 
-    const userId = JSON.parse(localStorage.getItem('@USERID'))
+    const { userProfile, userLogout } = useContext(UserContext)
 
-    const header = {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    }
+    const { isOpen, setIsOpen, techs, setTechs, isNewOpen } = useContext(TechContext)
 
-    useEffect(() => {
-        const loadUser = async () => {
-            try {
-                const { data } = await api.get(`/profile`, header)
-                setUserProfile(data)
-            } catch (error) {
-                console.log(error.message)
-            }
-        }
-        loadUser()
-    }, [])
 
 
     return (
@@ -38,7 +24,7 @@ export const UserPage = () => {
 
                 <StyledLogo src={logo} alt="" />
                 <StyledButton2 onClick={() => {
-                    localStorage.clear(), navigate('/')
+                    userLogout()
                 }}>Voltar</StyledButton2>
 
             </StyledHeader>
@@ -47,8 +33,15 @@ export const UserPage = () => {
                 <StyledText>{userProfile.course_module}</StyledText>
             </StyledSection>
             <StyledSection2 borderColor='transparent'>
-                <StyledTitle>Que pena! Estamos em desenvolvimento :(</StyledTitle>
-                <StyledText2>Nossa aplicação está em desenvolvimento, em breve teremos novidades</StyledText2>
+                <DivTech>
+                    <StyledText2>Tecnologias</StyledText2>
+                    <img onClick={() => setIsOpen(true)} src={plus} alt="" />
+                </DivTech>
+                {isOpen ? <Modal  techs={techs} setTechs={setTechs}  setIsOpen={setIsOpen} /> : null}
+                {isNewOpen ? <ModalAtt/> : null}
+                {techs.length > 0 ? (
+                <TechList />
+            ) : (<StyledText2>Nenhuma tecnologia cadastrada</StyledText2>)}
             </StyledSection2>
 
 
